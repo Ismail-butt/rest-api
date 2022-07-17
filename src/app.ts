@@ -5,6 +5,7 @@ import connect from './utils/connect'
 import logger from './utils/logger'
 import createServer from './utils/server'
 import { restResponseTimeHistogram, startMetricsServer } from './utils/metrics'
+import swaggerDocs from './utils/swagger'
 
 const port = config.get<number>('port')
 
@@ -32,4 +33,6 @@ app.listen(port, async () => {
   await connect()
 
   startMetricsServer()
+
+  swaggerDocs(app, port)
 })
