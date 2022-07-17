@@ -85,6 +85,28 @@ function routes(app: Express) {
     updateProductHandler
   )
 
+  /**
+   * @openapi
+   * '/api/products/{productId}':
+   *  get:
+   *     tags:
+   *     - Products
+   *     summary: Get a single product by the productId
+   *     parameters:
+   *      - name: productId
+   *        in: path
+   *        description: The id of the product
+   *        required: true
+   *     responses:
+   *       200:
+   *         description: Success
+   *         content:
+   *          application/json:
+   *           schema:
+   *              $ref: '#/components/schema/Product'
+   *       404:
+   *         description: Product not found
+   */
   app.get(
     '/api/products/:productId',
     validateResource(getProductSchema),
