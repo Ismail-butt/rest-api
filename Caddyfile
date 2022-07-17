@@ -1,0 +1,4 @@
+rest-api.snip.io {
+    reverse_proxy rest-api:1337 {
+        header_down Strict-Transport-Security max-age=31536000;    }
+}
