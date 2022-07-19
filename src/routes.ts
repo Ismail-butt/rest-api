@@ -63,6 +63,29 @@ function routes(app: Express) {
    */
   app.post('/api/users', validateResource(createUserSchema), createUserHandler)
 
+  /**
+   * @openapi
+   * '/api/sessions':
+   *  post:
+   *     tags:
+   *     - Sessions
+   *     summary: Login a user
+   *     requestBody:
+   *      required: true
+   *      content:
+   *        application/json:
+   *           schema:
+   *            $ref: '#/components/schemas/CreateSessionInput'
+   *     responses:
+   *        200:
+   *          description: Success
+   *          content:
+   *            application/json:
+   *              schema:
+   *                $ref: '#/components/schemas/CreateSessionResponse'
+   *        401:
+   *          description: Invalid email or password
+   */
   app.post(
     '/api/sessions',
     validateResource(createSessionSchema),
